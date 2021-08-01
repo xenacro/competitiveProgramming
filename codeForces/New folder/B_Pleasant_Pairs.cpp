@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,r=0;
+        cin>>n;
+        int a[n];
+        for(int i=0; i<n; i++)
+            cin>>a[i];
+        // for(int i=0; i<n-1; i++){
+        //     for(int j=i+1; j<n; j++){
+        //         if(a[i]*a[j]==i+j+2)
+        //             r++;
+        //     }
+        // }
+        int j;
+        for(int i=0; i<n;i++){
+            if(((2*i)+3)%a[i])
+                j=((((2*i)+3)/a[i])+1)*a[i];
+            else
+                j=((((2*i)+3)/a[i]))*a[i];
+            for(;j<=n+i+1; j+=a[i])
+                if(j==a[i]*a[j-i-2])
+                    r++;
+        }
+        cout<<r<<endl;
+    }
+}
